@@ -1,0 +1,25 @@
+Message:
+  user_id: integer
+  title: string
+  body: text
+  time_since: time
+  vote: integer
+  room_id: integer
+
+Reply:
+  user_id: integer
+  body: text
+  time_since: time
+  vote: integer
+  message_id: integer
+
+Room:
+  title: string
+  user_id: integer
+
+User:
+  name: string
+  email: string
+  password: string
+
+Vote:
