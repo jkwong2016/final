@@ -1,0 +1,5 @@
+<h1>MyKellogg Messages</h1>
+<% @messages.each do |message| %>
+	<p><a href = "messages/<%= message.id %>"><%= message.title %>:</a> <%= message.body %> </p>
+	<p>Votes: <%= message.vote %></p>
+<% end %>

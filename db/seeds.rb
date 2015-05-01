@@ -5,14 +5,6 @@ Reply.delete_all
 Room.delete_all
 User.delete_all
 
-# Create the Messages
-puts "Creating Messages."
-message1 = Message.create(user_id: bob.id, title: "Bored", body: "I can't stop falling asleep", vote: "43", room_id: kiei_925.id)
-message2 = Message.create(user_id: mary.id, title: "At Work", body: "I've been browsing ESPN for the last 5 hours", vote: "99", room_id: at_work.id)
-message3 = Message.create(user_id: tiff.id, title: "Doing HW", body: "I can't stop modeling financials", vote: "20", room_id: fin_430.id)
-message4 = Message.create(user_id: ray.id, title: "GTL", body: "Gym Tan Laundry is all I do at Kellogg", vote: "201", room_id: space.id)
-message5 = Message.create(user_id: gordon.id, title: "MyKellogg", body: "The atrium is where dreams go to die", vote: "4", room_id: atrium.id)
-
 # Create the Users
 puts "Creating users"
 bob = User.create(name: "Bob Smith", email: "bsmith2016@kellogg.northwestern.edu", password: "qwerty")
@@ -23,11 +15,19 @@ ray = User.create(name: "Ray Su", email: "rsu2016@kellogg.northwestern.edu", pas
 
 # Create the Rooms
 puts "Creating rooms"
-kiei_925 = Room.create(name: "KIEI-925", user_id: bob.id)
-at_work = Room.create(name: "At Work", user_id: mary.id)
-fin_430 = Room.create(name: "FIN_430", user_id: tiff.id)
-spac = Room.create(name: "SPAC", user_id: ray.id)
-atrium = Room.create(name: "Atrium", user_id: gordon.id)
+kiei_925 = Room.create(title: "KIEI-925", user_id: bob.id)
+at_work = Room.create(title: "At Work", user_id: mary.id)
+fin_430 = Room.create(title: "FIN_430", user_id: tiff.id)
+spac = Room.create(title: "SPAC", user_id: ray.id)
+atrium = Room.create(title: "Atrium", user_id: gordon.id)
+
+# Create the Messages
+puts "Creating Messages."
+message1 = Message.create(user_id: bob.id, title: "Bored", body: "I can't stop falling asleep", vote: 43, room_id: kiei_925.id)
+message2 = Message.create(user_id: mary.id, title: "At Work", body: "I've been browsing ESPN for the last 5 hours", vote: 99, room_id: at_work.id)
+message3 = Message.create(user_id: tiff.id, title: "Doing HW", body: "I can't stop modeling financials", vote: 20, room_id: fin_430.id)
+message4 = Message.create(user_id: ray.id, title: "GTL", body: "Gym Tan Laundry is all I do at Kellogg", vote: 201, room_id: spac.id)
+message5 = Message.create(user_id: gordon.id, title: "MyKellogg", body: "The atrium is where dreams go to die", vote: 4, room_id: atrium.id)
 
 # Create the replies
 puts "Creating replies"
