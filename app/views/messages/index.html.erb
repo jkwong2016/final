@@ -1,5 +1,21 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <h1>MyKellogg Messages</h1>
+<h3><%= link_to "Add a message", new_message_url, class:'btn btn-primary' %></h3>
+
+
+<!-- <a class="btn btn-primary btn-lg" href="howitworks.html" role="button">Learn more</a></p> -->
+
 <% @messages.each do |message| %>
+	
 	<p><a href = "messages/<%= message.id %>"><%= message.title %>:</a> <%= message.body %> </p>
-	<p>Votes: <%= message.vote %></p>
+	<p>
+		Votes: <%= message.vote %> 
+		<%= link_to "Update", edit_message_url(message) %>
+		<%= link_to "Destroy", message_url(message), method: :delete %>
+	</p>
+
 <% end %>
+
