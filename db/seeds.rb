@@ -32,12 +32,18 @@ message5 = Message.create(user_id: gordon.id, title: "MyKellogg", body: "The atr
 # Create the replies
 puts "Creating replies"
 message1reply1 = Reply.create(user_id: mary.id, body: "slap yourself to stay awake" , vote: "7", message_id: message1.id)
-message1reply2 = Reply.create(user_id: tiff.id, body: "drink water. it helps" , vote: "8", message_id: message1.id)
+message1reply2 = Reply.create(user_id: tiff.id, body: "drink water. it helps" , vote: "8", message_id: message5.id)
 message2reply1 = Reply.create(user_id: ray.id, body: "My boss hasn't even been in the office for 6 months" , vote: "1", message_id: message2.id)
 message3reply1 = Reply.create(user_id: gordon.id, body: "We don't do finance at Kellogg", vote: "2", message_id: message3.id)
 message4reply1 = Reply.create(user_id: bob.id, body: "I just do laundry", vote: "3", message_id: message4.id)
 
+# Create the affiliations
+puts "Creating affiliations"
+Affiliation.create(user_id: bob.id, room_id: kiei_925.id)
+Affiliation.create(user_id: mary.id, room_id: at_work.id)
+Affiliation.create(user_id: tiff.id, room_id: fin_430.id)
+Affiliation.create(user_id: ray.id, room_id: spac.id)
+Affiliation.create(user_id: gordon.id, room_id: atrium.id)
 
-
-puts "There are now #{Message.count} messages, #{User.count} users, #{Room.count} rooms, and #{Reply.count} replies in the database."
+puts "There are now #{Message.count} messages, #{User.count} users, #{Room.count} rooms, #{Affiliation.count} affiliations, and #{Reply.count} replies in the database."
 

@@ -7,6 +7,7 @@
 		<%= message.label :Update_Message %>
 		<p>Title <%= message.text_field :title, class: "form- control" %></p>
 		<p>Body <%= message.text_field :body, class: "form- control" %></p>
+		<p>Room <%= message.collection_select(:room_id, Room.all, :id, :title) %></p>
 	</div>
 	<%= message.button 'Update Message', class: "btn btn-success" %>
 <% end %>

@@ -5,6 +5,7 @@ Message:
   time_since: time
   vote: integer
   room_id: integer
+  reply_id: integer
 
 Reply:
   user_id: integer
@@ -21,3 +22,7 @@ User:
   name: string
   email: string
   password: string
+
+Affiliation:
+  user_id: integer
+  room_id: integer

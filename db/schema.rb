@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "affiliations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+  end
+
+  add_index "affiliations", ["room_id"], name: "index_affiliations_on_room_id"
+  add_index "affiliations", ["user_id"], name: "index_affiliations_on_user_id"
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.string  "title"
@@ -20,8 +28,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.time    "time_since"
     t.integer "vote"
     t.integer "room_id"
+    t.integer "reply_id"
   end
 
+  add_index "messages", ["reply_id"], name: "index_messages_on_reply_id"
   add_index "messages", ["room_id"], name: "index_messages_on_room_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
