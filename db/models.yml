@@ -21,7 +21,7 @@ Room:
 User:
   name: string
   email: string
-  password: string
+  password_digest: string
 
 Affiliation:
   user_id: integer

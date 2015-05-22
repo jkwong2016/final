@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   resources :replies
   resources :users
   resources :affiliations
+  resources :sessions
+
+  get "/logout", to: "sessions#destroy"
+
+  root to: "messages#index"
+
 end

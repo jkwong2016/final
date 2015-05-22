@@ -1,0 +1,7 @@
+<%= form_for @user do |form| %>
+	<div>
+		<%= form.label :password %>
+		<%= form.password_field :password %>
+	</div>
+	<%= form.button 'Update', class: "btn btn-success" %>
+<% end %>

@@ -5,5 +5,9 @@
 
 <h3><%= link_to "Update Message", edit_message_url %></h3>
 
+<p> <%= link_to "Add a Reply", new_reply_url(message_id: @message.id) %></p>
 
-
+<p>Replies</p>
+<% @message.replies.each do |reply| %>
+	<p><%= reply.body %></p>
+<% end %>
