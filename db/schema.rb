@@ -26,37 +26,49 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "title"
     t.text    "body"
     t.time    "time_since"
-    t.integer "vote"
     t.integer "room_id"
     t.integer "reply_id"
+    t.integer "vote_id"
   end
 
   add_index "messages", ["reply_id"], name: "index_messages_on_reply_id"
   add_index "messages", ["room_id"], name: "index_messages_on_room_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+  add_index "messages", ["vote_id"], name: "index_messages_on_vote_id"
 
   create_table "replies", force: :cascade do |t|
     t.integer "user_id"
     t.text    "body"
     t.time    "time_since"
-    t.integer "vote"
     t.integer "message_id"
+    t.integer "vote_id"
   end
 
   add_index "replies", ["message_id"], name: "index_replies_on_message_id"
   add_index "replies", ["user_id"], name: "index_replies_on_user_id"
+  add_index "replies", ["vote_id"], name: "index_replies_on_vote_id"
 
   create_table "rooms", force: :cascade do |t|
-    t.string  "title"
+    t.string "title"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "password_digest"
+    t.integer "vote_id"
+  end
+
+  add_index "users", ["vote_id"], name: "index_users_on_vote_id"
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "message_id"
+    t.integer "reply_id"
     t.integer "user_id"
   end
 
-  add_index "rooms", ["user_id"], name: "index_rooms_on_user_id"
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-  end
+  add_index "votes", ["message_id"], name: "index_votes_on_message_id"
+  add_index "votes", ["reply_id"], name: "index_votes_on_reply_id"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

@@ -8,12 +8,13 @@ class RepliesController < ApplicationController
 	end
 
 	def new
-		@reply = Reply.new
+		# @reply = Reply.new
 	end
 
 	def create
 		@reply = Reply.new(params["reply"])
 		@reply.message_id = params["message_id"]
+		@reply.user_id = session["user_id"]
 		@reply.save
 		redirect_to message_url(@reply.message)
 	end

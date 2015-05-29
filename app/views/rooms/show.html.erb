@@ -1,0 +1,10 @@
+<span class="pull-right">
+	<%= link_to "Create a New Message", new_message_path(room_id: @room.id), class: 'btn btn-sm btn-success' %>
+</span>
+
+<h3><%= @room.title %></h3>
+
+
+<% @room.messages.each do |message| %>
+	<p><%= link_to message.body, message_url(message) %> </p>
+<% end %>

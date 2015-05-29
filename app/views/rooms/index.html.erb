@@ -1,0 +1,12 @@
+<h3 class="page-header">
+  All Rooms
+  <span class="pull-right">
+    <%= link_to "Create a New Room", new_room_path, class: 'btn btn-sm btn-success' %>
+  </span>
+</h3>
+
+<ul>
+  <% @rooms.each do |room| %>
+    <p> <%= link_to room.title, room_url(room) %> </p>
+  <% end %>
+</ul>

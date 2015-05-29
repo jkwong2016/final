@@ -1,0 +1,7 @@
+<%= form_for @room do |form| %>
+  <div class="form-group">
+    <%= form.label :Room_Name %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <%= form.button 'Create A New Room', class: "btn btn-success" %>
+<% end %>

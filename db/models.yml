@@ -3,26 +3,31 @@ Message:
   title: string
   body: text
   time_since: time
-  vote: integer
   room_id: integer
   reply_id: integer
+  vote_id: integer
 
 Reply:
   user_id: integer
   body: text
   time_since: time
-  vote: integer
   message_id: integer
+  vote_id: integer
 
 Room:
   title: string
-  user_id: integer
 
 User:
   name: string
   email: string
   password_digest: string
+  vote_id: integer
 
 Affiliation:
   user_id: integer
   room_id: integer
+
+Vote:
+  message_id: integer
+  reply_id: integer
+  user_id: integer

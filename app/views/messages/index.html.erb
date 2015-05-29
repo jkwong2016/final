@@ -9,10 +9,8 @@
 	
 	<p><a href = "messages/<%= message.id %>"><%= message.title %>:</a> <%= message.body %> </p>
 	<p>
-		Votes: <%= message.vote %> 
 		<%= link_to "Update", edit_message_url(message) %>
 		<%= link_to "Destroy", message_url(message), method: :delete %>
 	</p>
 
 <% end %>
-

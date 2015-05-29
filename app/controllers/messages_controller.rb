@@ -14,7 +14,14 @@ class MessagesController < ApplicationController
 	end
 
 	def create
-		Message.create(params["message"])
+		@message = Message.create(params["message"])
+		@message.room_id = params["room_id"]
+		@message.user_id = session["user_id"]
+		@message.save
+		@affiliation = Affiliation.new
+		@affiliation.user_id = session["user_id"]
+		@affiliation.room_id = params["room_id"]
+		@affiliation.save
 		redirect_to messages_url
 	end
 

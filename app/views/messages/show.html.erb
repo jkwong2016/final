@@ -1,13 +1,21 @@
 <h1><%= @message.title %></h1>
 <h2><%= @message.body %></h2>
-<h2>Votes: <%= @message.vote %></h2>
-<h2>Room: <%= @message.room.title %></h2>
+<p>Votes: <%= @message.votes.count%></p>
 
-<h3><%= link_to "Update Message", edit_message_url %></h3>
 
-<p> <%= link_to "Add a Reply", new_reply_url(message_id: @message.id) %></p>
+<p> <%= link_to "Upvote", new_vote_url(message_id: @message.id, user_id: session["user_id"]) %></p>
+
+<!-- <p> <%= link_to "Add a Reply", new_reply_url(message_id: @message.id) %></p> -->
 
 <p>Replies</p>
 <% @message.replies.each do |reply| %>
 	<p><%= reply.body %></p>
+<% end %>
+
+<% @reply = Reply.new %>
+<%= form_for @reply, url:replies_url(message_id: @message.id) do |form| %>
+	<div class="form-group">
+		<%= form.text_field :body, class: "form-control" %>
+	</div>
+	<%= form.button 'Add a Reply', class: "btn btn-success" %>
 <% end %>

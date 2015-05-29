@@ -2,12 +2,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-<%= form_for @message do |message| %>
+<%= form_for @message, url:messages_url(room_id: params["room_id"]) do |message| %>
 	<div class="form-group">
 		<%= message.label :New_Message %>
 		<p>Title <%= message.text_field :title, class: "form- control" %></p>
 		<p>Body <%= message.text_field :body, class: "form- control" %></p>
-		<p>Room <%= message.collection_select(:room_id, Room.all, :id, :title, {}, {class: "form-control"}) %></p>
+		<!-- <p>Room <%= message.collection_select(:room_id, Room.all, :id, :title, {}, {class: "form-control"}) %></p> -->
 	</div>
 	<%= message.button 'Create Message', class: "btn btn-success" %>
 <% end %>
