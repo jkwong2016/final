@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :messages do
+    resources :replies
+  end  
   resources :rooms
-  resources :replies
   resources :users
   resources :affiliations
   resources :sessions

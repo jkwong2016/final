@@ -1,21 +1,46 @@
-<h1><%= @message.title %></h1>
-<h2><%= @message.body %></h2>
-<p>Votes: <%= @message.votes.count%></p>
+<link rel="stylesheet" type="text/css" href="messages.css">
+
+<%= stylesheet_link_tag 'messages' %>
+
+<div class="container-fluid">	
+		<div class="row fluid">
+	        <div class="col-md-11 messagebody">
+	            <%= @message.body %>
+	        </div>
+	        <div class="col-md-1">
+	            <div class="short-div">
+	            	<%= link_to content_tag(:i, nil, class: "fa fa-chevron-up"), new_vote_url(message_id: @message.id, user_id: session["user_id"]) %> 
+            	</div>
+            	<div class="short-div votecount">
+	      			<%= @message.votes.count%>
+	      		</div>
+	        </div>
+	        <div class = "col-md-12 replytitle">
+	        	<% if @message.replies.count == 1 %>
+					<%= @message.replies.count %> REPLY
+				<% else %>
+					<%= @message.replies.count %> REPLIES
+				<% end %>
+	        </div>
+	    </div>
+</div>
 
 
-<p> <%= link_to "Upvote", new_vote_url(message_id: @message.id, user_id: session["user_id"]) %></p>
 
-<!-- <p> <%= link_to "Add a Reply", new_reply_url(message_id: @message.id) %></p> -->
+<!-- <p><%= @message.replies.count %> Replies</p> -->
 
-<p>Replies</p>
+<div class="block_1"></div> <hr/>
+
+
 <% @message.replies.each do |reply| %>
-	<p><%= reply.body %></p>
+	<p class = "replybody"><%= reply.body %></p>
+	<div class="block_1"></div> <hr/>
 <% end %>
 
 <% @reply = Reply.new %>
-<%= form_for @reply, url:replies_url(message_id: @message.id) do |form| %>
+<%= form_for [@message, @reply] do |form| %>
 	<div class="form-group">
 		<%= form.text_field :body, class: "form-control" %>
 	</div>
-	<%= form.button 'Add a Reply', class: "btn btn-success" %>
+	<%= form.button 'Add a Reply', class: "btn btn-primary" %>
 <% end %>

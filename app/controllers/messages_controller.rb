@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
 
 	def show
 		@message = Message.find_by(id: params["id"])
+		reply_count = @message.replies.count
 	end
 
 	def new
@@ -16,7 +17,8 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.create(params["message"])
 		@message.room_id = params["room_id"]
-		@message.user_id = session["user_id"]
+		# @message.user_id = session["user_id"]
+		@message.user = current_user
 		@message.save
 		@affiliation = Affiliation.new
 		@affiliation.user_id = session["user_id"]

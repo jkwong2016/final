@@ -1,16 +1,30 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="messages.css">
+<%= stylesheet_link_tag 'messages' %>
 
-<h1>MyKellogg Messages</h1>
-<h3><%= link_to "Add a message", new_message_url, class:'btn btn-primary' %></h3>
-
+<div class="container-fluid">
 <% @messages.each do |message| %>
-	
-	<p><a href = "messages/<%= message.id %>"><%= message.title %>:</a> <%= message.body %> </p>
-	<p>
-		<%= link_to "Update", edit_message_url(message) %>
-		<%= link_to "Destroy", message_url(message), method: :delete %>
-	</p>
+		<div class="row fluid">
+	        <div class="block_1"></div> <hr/>
+	        <div class="col-md-11">
+	            <%= link_to message.body, message_url(message), class: "btn btn-primary messagebox" %>
+	        </div>
+	        <div class="col-md-1">
+	            <div class="short-div">
+	            	<%= link_to content_tag(:i, nil, class: "fa fa-chevron-up"), new_vote_url(message_id: message.id, user_id: session["user_id"]) %> 
+            	</div>
+            	<div class="short-div votecount">
+	      			<%= message.votes.count%>
+	      		</div>
+	        </div>
+	    </div>
+	    <div class="row row2">
+	      	<div class="col-md-1">
+	      		<%= link_to "Update", edit_message_url(message) %>
+	      	</div>  
+	      	<div class="col-md-1">
+	      		<%= link_to "Destroy", message_url(message), method: :delete %>
+	      	</div>
+	      	
+	    </div>
 
 <% end %>
