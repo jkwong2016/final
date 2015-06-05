@@ -36,6 +36,17 @@ body {
 	color: #fff;
 }
 
+.fa-pencil-square-o {
+	font-size: 60px;
+	padding-right: 10px;
+	color: #f0ffff;
+}
+
+.fa-pencil-square-o:hover {
+	color:#fff;
+}
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

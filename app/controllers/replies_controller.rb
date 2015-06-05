@@ -16,12 +16,14 @@ class RepliesController < ApplicationController
 
 		@message = Message.find_by(id: params["message_id"])
 
-		@reply.message = @message
-		@reply.user = current_user
-
-		@reply.save
-		redirect_to message_url(@message)
-
+		if @reply.body.blank?
+			redirect_to message_url(@message), alert: "Reply cannot be blank"
+		else
+			@reply.message = @message
+			@reply.user = current_user
+			@reply.save
+			redirect_to message_url(@message)
+		end
 		# @reply.message_id = params["message_id"]
 		# @reply.user_id = session["user_id"]
 		# @reply.save
