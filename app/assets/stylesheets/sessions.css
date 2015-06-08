@@ -1,0 +1,21 @@
+.headline {
+	text-align: center;
+	padding: 20px;
+}
+
+.signin {
+	width:30%;
+	margin:0 auto;
+}
+
+.button {
+	width:30%;
+	margin:0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.signup {
+	margin: 400px;
+	padding-top: 20px;
+}

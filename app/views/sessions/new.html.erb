@@ -1,7 +1,38 @@
-  	<%= form_tag sessions_path, class: "form-signin" do %>
-      <h1>MyKellogg</h1>
-      <h2 class="form-signin-heading">Please sign in</h2>
-      <%= text_field_tag :email, "", class: "form-control", placeholder: "Email Address" %>
-      <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %>
-      <%= button_tag "Sign In", class: "btn btn-lg btn-primary btn-block" %>
-	<% end %>
+<html>
+<head>
+  <title>MyKellogg</title>
+  <%= javascript_include_tag 'application' %>
+  
+  <!-- Logo Font -->
+    <link href="//fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet" type="text/css">
+    
+  <!-- Bootstrap -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" type="text/css" href="sessions.css">
+  <%= stylesheet_link_tag 'sessions' %>
+
+</head>
+  	<body>
+
+	  	<div class="container">
+	    <%= render "shared/alert" %>
+		
+		  	<%= form_tag sessions_path, class: "form-signin form" do %>
+		      <h1 class="headline">MyKellogg</h1>
+		      <%= text_field_tag :email, "", class: "form-control signin", placeholder: "Email Address" %>
+		      <%= password_field_tag :password, "", class: "form-control signin", placeholder: "Password" %>
+		      <%= button_tag "Sign In", class: "btn btn-lg btn-primary btn-block button" %>
+			  <p><%= link_to "New to MyKellogg? Create an account.", new_user_url, class: "signup" %></p>
+			<% end %>
+		</div>
+
+	</body>
+</html>

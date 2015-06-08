@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-	# skip_before_action :auth, only: [:new]
+	skip_before_action :auth, only: [:index, :show]
 
 	def index
 		@messages = Message.all

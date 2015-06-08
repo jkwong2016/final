@@ -7,10 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :auth    # "auth" can be named anything 
 
   def auth
- 	if current_user
- 	else
- 		redirect_to new_session_url
- 	end
+ 	  unless current_user
+ 		 redirect_to new_session_url
+ 	  end
   end
 
   def current_user
